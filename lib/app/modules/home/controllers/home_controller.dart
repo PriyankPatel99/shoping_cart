@@ -4,9 +4,11 @@ import 'package:shoping_cart/app/domian/usecases/products_usecase.dart';
 
 class HomeController extends GetxController {
   final ProductsUsecase? productsUsecase;
+
   HomeController(this.productsUsecase);
-  final count = 0.obs;
-  List<Products> productsList = [];
+
+  List<Products> productsList = <Products>[].obs;
+
   @override
   void onInit() {
     getProduct();
@@ -21,7 +23,11 @@ class HomeController extends GetxController {
     });
   }
 
-
-
-  void increment() => count.value++;
+  Future<void> getProductCategory(String category) async {
+    final result = await productsUsecase!.getProductCategoriesList(category);
+    result.fold((failure) {}, (r) {
+      productsList = r;
+      update();
+    });
+  }
 }

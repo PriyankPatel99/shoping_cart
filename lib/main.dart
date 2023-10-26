@@ -10,7 +10,7 @@ void main() {
   di.init();
   runApp(
     GetMaterialApp(
-      title: "Shoping Cart",
+      title: "Shopping Cart",
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       themeMode: ThemeMode.system,

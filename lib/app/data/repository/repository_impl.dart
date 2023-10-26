@@ -25,4 +25,32 @@ class ProductsRepositoryImpl implements ProductsRepository {
       return const Left(CommonFailure('SocketDirection exeption'));
     }
   }
+
+  @override
+  Future<Either<Failure, List<String>>> getCategoriesList() async{
+    try {
+      final result = await productsDataSource.getCategoriesList();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.mes));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
+    } on SocketDirection {
+      return const Left(CommonFailure('SocketDirection exeption'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Products>>> getProductCategoriesList(String category)async {
+    try {
+      final result = await productsDataSource.getProductCategoriesList(category);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.mes));
+    } on TlsException catch (e) {
+      return Left(CommonFailure('Certificated Not Valid:\n${e.message}'));
+    } on SocketDirection {
+      return const Left(CommonFailure('SocketDirection exeption'));
+    }
+  }
 }
