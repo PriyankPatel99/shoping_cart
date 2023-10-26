@@ -1,7 +1,7 @@
 Step for run project
->>>>>> Runs the below command <<<<<<<<
+>>>>>> Runs the below command <<<<<<<</n
 > flutter pub get
-> flutter pub run build_runner build
-> flutter run
+> /nflutter pub run build_runner build
+> /nflutter run
 > 
 > Release APK Path :- shoping_cart\APK
